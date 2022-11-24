@@ -1,4 +1,4 @@
-# Task 10 - SQL
+Flask REST full API
 
 Create an application that inserts/select/updates/deletes data in the database using sqlalchemy and flask rest framework.
 
@@ -77,8 +77,4 @@ Modify application using Flask Rest Framework.
 Write tests using Unittest module or py.test.
 
 Resources:
-
-SQLalchemy https://www.sqlalchemy.org/
-
-Design API https://pages.apigee.com/rs/apigee/images/api-design-ebook-2012-03.pdf
 

@@ -1,4 +1,4 @@
-#secrets
+﻿#secrets
 local_settings.py
 testing_settings.py
 
@@ -9,3 +9,6 @@ __pycache__/
 sq_db.sql
 db_functions.py
 RData_Base.py
+
+#Хлам
+.idea

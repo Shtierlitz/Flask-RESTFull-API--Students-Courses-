@@ -76,5 +76,4 @@ Modify application using Flask Rest Framework.
 
 Write tests using Unittest module or py.test.
 
-Resources:
 

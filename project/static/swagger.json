@@ -1,0 +1,581 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Flask RestFull API project",
+    "version": "1.0.0",
+    "title": "Students and Courses",
+    "contact": {
+      "name": "Igor Davydovskyi",
+      "url": "https://shtierlitz.github.io/CV/",
+      "email": "rollbar1990@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:5000",
+      "description": "Local-Host Server"
+    }
+  ],
+  "paths": {
+    "/api/v1/students": {
+      "get": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Returns a student list",
+        "description": "Returns the list of all students",
+        "operationId": "get_student_list",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Adding student to the data base",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "first_name",
+            "type": "string",
+            "required": true,
+            "description": "First name of the student to add to the base."
+          },
+          {
+            "in": "formData",
+            "name": "last_name",
+            "type": "string",
+            "required": true,
+            "description": "Second name of the student to add to the base."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/v1/students/{student_id}": {
+      "get": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Returns student by it's ID",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "student_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "Numeric ID of the student to update."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Updates a student name by it's ID",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "student_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "ID of the student that need to be updated."
+          },
+          {
+            "name": "first_name",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "First name of th student to add to the base."
+          },
+          {
+            "name": "last_name",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "Second name of th student to add to the base."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Updates a student name by it's ID",
+        "parameters": [
+          {
+            "name": "student_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "ID of the student that need to be deleted."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/v1/courses/{course_id}/students/{student_id}": {
+      "post": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Adding student to a course by ID and course.id",
+        "parameters": [
+          {
+            "name": "student_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "ID of the student that need to be added to the course."
+          },
+          {
+            "name": "course_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "ID of the course that need to be added to student."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Removing a student from a course by student ID and course ID",
+        "parameters": [
+          {
+            "name": "student_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "ID of the student to be removed from the course.."
+          },
+          {
+            "name": "course_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "ID of the course from which the student is to be removed."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/v1/students/{course_name}/courses": {
+      "get": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Finding all students related to the course with a given name.",
+        "parameters": [
+          {
+            "name": "course_name",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "Course name."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/v1/groups": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Returns the list of all groups or finds all groups with less or equals student count",
+        "description": "Returns the list of all groups",
+        "operationId": "get_group_list",
+        "parameters": [
+          {
+            "name": "stud_count",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the number of students up to which to find them."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Adding group to the data base",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "Name of a new group."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/v1/groups/{group_id}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Returns group by it's ID",
+        "parameters": [
+          {
+            "name": "group_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "Numeric ID of the group"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Updates a group name by it's ID",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "group_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "ID of the student that need to be updated."
+          },
+          {
+            "name": "group_name",
+            "in": "formData",
+            "type": "integer",
+            "required": true,
+            "description": "A new name of a group."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Deletes a group by it's ID",
+        "parameters": [
+          {
+            "name": "group_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "ID of the group that need to be deleted."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/v1/courses": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Returns the list of all courses",
+        "description": "Returns the list of all courses",
+        "operationId": "get_courses_list",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Adding new course to the data base",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "course_name",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "Name of the course to add to the base."
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "Description of the course."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/v1/courses/{course_id}": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Returns course by it's ID",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "Numeric ID of the course to get."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Updates a course info by it's ID",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "ID of the Course that need t"
+          },
+          {
+            "name": "course_name",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "Name of the course that need"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "type": "string",
+            "required": true,
+            "description": "New description of the course"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Deletes a course by it's ID",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "ID of the course that need to be deleted."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "505": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  }
+}

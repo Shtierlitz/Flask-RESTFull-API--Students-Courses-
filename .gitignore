@@ -1,0 +1,11 @@
+#secrets
+local_settings.py
+testing_settings.py
+
+# Byte-compiled / optimized / DLL data
+__pycache__/
+
+#Файлы которые могут пригодиться
+sq_db.sql
+db_functions.py
+RData_Base.py

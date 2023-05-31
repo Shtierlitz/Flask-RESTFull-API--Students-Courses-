@@ -129,8 +129,8 @@ or
 http://localhost:5000/apidocs/
 
 You should be able to see next swagger on the screen:
-![Swagger](../docs_images/swagger_1.png)
-![Swagger](../docs_images/swagger_2.png)
+![Swagger](./docs_images/swagger_1.png)
+![Swagger](./docs_images/swagger_2.png)
 
 
 # Sources

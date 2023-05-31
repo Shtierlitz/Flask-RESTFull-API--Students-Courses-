@@ -9,6 +9,7 @@ __pycache__/
 sq_db.sql
 db_functions.py
 RData_Base.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 .idea

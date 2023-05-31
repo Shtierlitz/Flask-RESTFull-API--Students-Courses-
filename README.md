@@ -94,6 +94,29 @@ flask run
 ```
 
 ## Test 
+
+## Create Files
+For the tests to work correctly, create your own file `testing_settings.py` 
+and place it in a folder next to the file `settings.py` of this Flask project.
+
+### Required contents of the testing_settings.py file:
+```python
+# project/testing_settings.py
+from flask_swagger_ui import get_swaggerui_blueprint
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+SWAGGER_URL = '/swagger'
+API_URL = '/static/swagger.json'
+SWAGGER_BLUEPRINT = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={"app_name": 'Shtierlitzs-Python-Flask-RESTFull-API'}
+)
+
+```
+
+
 To run tests from the localhost you need to return into root directory and run:  
 ```bash
 pytest tests\test.py
@@ -106,8 +129,8 @@ or
 http://localhost:5000/apidocs/
 
 You should be able to see next swagger on the screen:
-![Swagger](./docs_images/swagger_1.png)
-![Swagger](./docs_images/swagger_2.png)
+![Swagger](../docs_images/swagger_1.png)
+![Swagger](../docs_images/swagger_2.png)
 
 
 # Sources

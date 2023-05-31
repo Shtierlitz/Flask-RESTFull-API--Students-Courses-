@@ -1,3 +1,5 @@
+# project/models.py
+
 from sqlalchemy import Column, Integer, String, ForeignKey, create_engine
 from project.local_settings import SQLALCHEMY_DATABASE_URI
 from flask_sqlalchemy import SQLAlchemy

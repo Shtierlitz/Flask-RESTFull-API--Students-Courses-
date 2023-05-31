@@ -1,3 +1,4 @@
+# project/secondary_functions/scripts.py
 def query_students(query) -> list:
     lst = []
     dct = {}

@@ -1,3 +1,4 @@
+# tests/test.py
 from project.app import *
 from .fill_db_tests import fill_db_test
 from project.models import *

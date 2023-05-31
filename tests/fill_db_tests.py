@@ -1,5 +1,5 @@
+# tests/fill_db_tests.py
 from project.models import *
-
 
 
 def fill_db_test(db):
@@ -28,7 +28,6 @@ def fill_db_test(db):
                          'Holdo']
 
     group_list = ['co-36', 'vs-89', 'bk-69', 'lo-19', 'vv-83', 'uy-24', 'wf-69', 'xl-82', 'ay-14', 'hl-64']
-
 
     for s in range(len(group_list)):
         with Session() as session:

@@ -1,79 +1,115 @@
-Flask REST ful API
+# "Students-Courses" Flask RESTful API
 
-Create an application that inserts/select/updates/deletes data in the database using sqlalchemy and flask rest framework.
+## Description
+Flask application implementing RESTful api technology.   
+Learning project for inserting/selecting/updating/deleting courses and students who study them.
 
-Use PostgreSQL DB.
+## Technologies used
+`Python`, `Flask`, `Flask rest framework`, `SQLAlchemy`, `Flask Clic`, `PostgreSQL`, `Flasgger/Swagger_ui`, `pytest`
 
-Models have to have next field
+## Getting started
 
-GroupModel:
+To make it easy for you to get started with Django Weather Reminder, 
+here's a list of recommended next steps.
 
-name
+## Download
+Download the repository with this command: 
+```bash
+git clone https://github.com/Shtierlitz/Flask-RESTful-API--Students-Courses-.git
+```
+## Create Files
+For the local server to work correctly, create your own file `local_settings.py` 
+and place it in a folder next to the file `settings.py` of this Flask project.
+You will also need to create `.env` file and place it in the root of the project.
+
+### Required contents of the local_settings.py file:
+```python  
+# project/local_settings.py
+import os
+
+from flask_swagger_ui import get_swaggerui_blueprint
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
+DEBUG = True
+BASE_DIR = os.path.dirname(os.path.abspath("courses_app.py"))
+DB_HOST = os.environ.get('DATABASE_HOST')
+DB_USER = os.environ.get('DATABASE_USER')
+DB_NAME = os.environ.get('DATABASE_NAME')
+DB_PASS = os.environ.get('DATABASE_PASSWORD')
+SQLALCHEMY_DATABASE_URI = f'postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}'
+
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+SWAGGER_URL = '/swagger'
+API_URL = '/static/swagger.json'
+SWAGGER_BLUEPRINT= get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={"app_name": 'Shtierlitzs-Python-Flask-RESTFull-API'}
+    )
+```
+
+### Required contents of the .env file:
+```python
+SECRET_KEY='<your SECRET key>'  
+DATABASE_NAME="<database name>"  
+DATABASE_USER="<database username>"  
+DATABASE_PASS="<database password>"  
+DATABASE_HOST='localhost'
+```
+
+# Localhost development (only)
+
+## Flask run
+### Preparations
+Before using the app you must ensure that you have installed PostgreSQL server in your local machine, and   
+you have created database.  
+You need to create data that generates by db_fil.py
+Use command:
+```bash
+flask fill_db
+```
+
+### Venv
+You need to create a virtual environment and install all dependencies  
+
+To create virtual environment go to the root directory and run:
+```bash
+python -m venv venv
+```
+
+After you can install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+### Run app
+To run localhost server just get to the `project/` folder and then run the command:
+```bash
+flask run
+```
+
+## Test 
+To run tests from the localhost you need to return into root directory and run:  
+```bash
+pytest tests\test.py
+````
+## Api 
+### You can follow the following paths to use the `API`:
+After running `flask run` you can choose two links to use swagger:  
+http://localhost:5000/swagger/  
+or   
+http://localhost:5000/apidocs/
+
+You should be able to see next swagger on the screen:
+![Swagger](../docs_images/swagger_1.png)
+![Swagger](../docs_images/swagger_2.png)
 
 
+# Sources
 
-StudentModel:
+SQLalchemy https://www.sqlalchemy.org/
 
-group_id
+Design API https://pages.apigee.com/rs/apigee/images/api-design-ebook-2012-03.pdf
 
-first_name
-
-last_name
-
-
-
-CourseModel:
-
-name
-
-description 
-
-
-
-1. Create SQL files with data:
-
-create user and database. Assign all privileges on the database to the user.
-
-create a file with tables creation
-
-
-
-2. Create a python application
-
-Generate test data:
-
-10 groups with randomly generated names. The name should contain 2 characters, hyphen, 2 numbers
-
-Create 10 courses (math, biology, etc)
-
-200 students. Take 20 first names and 20 last names and randomly combine them to generate students.
-
-Randomly assign students to groups. Each group could contain from 10 to 30 students. It is possible that some groups will be without students or students without groups
-
-Create relation MANY-TO-MANY between tables STUDENTS and COURSES. Randomly assign from 1 to 3 courses for each student
-
-3. Write SQL Queries:
-
-Find all groups with less or equals student count.
-
-Find all students related to the course with a given name.
-
-Add new student
-
-Delete student by STUDENT_ID
-
-Add a student to the course (from a list)
-
-Remove the student from one of his or her courses
-
-
-
-Write tests using Unittest module or py.test.
-
-Modify application using Flask Rest Framework. 
-
-
-
-Write tests using Unittest module or py.test.
-
+OpenAPI and Swagger Editor https://www.youtube.com/watch?v=hPzorok-gI4&t=167s
 

@@ -1,3 +1,4 @@
+# E:\FoxMineded\Fox_september\task_10_sql\project\app.py
 from flasgger import Swagger
 from flask import Flask
 
@@ -30,5 +31,5 @@ def create_app(config='development'):
 
 
 if __name__ == '__main__':
-    app = create_app('development')
+    app = create_app('testing')
     app.run(debug=True)

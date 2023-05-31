@@ -5,7 +5,7 @@ Flask application implementing RESTful api technology.
 Learning project for inserting/selecting/updating/deleting courses and students who study them.
 
 ## Technologies used
-`Python`, `Flask`, `Flask rest framework`, `SQLAlchemy`, `Flask Clic`, `PostgreSQL`, `Flasgger/Swagger_ui`, `pytest`
+`Python`, `Flask`, `Flask rest framework`, `SQLAlchemy`, `Flask-CLI`, `PostgreSQL`, `Flasgger/Swagger_ui`, `pytest`
 
 ## Getting started
 
@@ -75,6 +75,11 @@ You need to create a virtual environment and install all dependencies
 To create virtual environment go to the root directory and run:
 ```bash
 python -m venv venv
+```
+
+Run virtual environment:
+```bash
+venv/scripts/activate
 ```
 
 After you can install dependencies:
